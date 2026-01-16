@@ -5,11 +5,11 @@ email: k.leidorf@gmail.com
 discord: Ketosh
 """
 
-# Seznam pro ukládání úkolů [cite: 5]
+# Seznam pro ukládání úkolů
 ukoly = []
 
 def hlavni_menu() -> str:
-    """Zobrazí hlavní menu a vrátí volbu uživatele[cite: 7, 8]."""
+    """Zobrazí hlavní menu a vrátí volbu uživatele."""
     while True:
         print("\nSprávce úkolů - Hlavní menu")
         print("1. Přidat nový úkol")
@@ -25,7 +25,7 @@ def hlavni_menu() -> str:
             print("Neplatná volba, zkuste to prosím znovu.")
 
 def pridat_ukol() -> None:
-    """Umožní uživateli zadat název a popis úkolu a uloží jej[cite: 13, 14]."""
+    """Umožní uživateli zadat název a popis úkolu a uloží jej."""
     while True:
         nazev = input("\nZadejte název úkolu: ").strip()
         popis = input("Zadejte popis úkolu: ").strip()
@@ -41,7 +41,7 @@ def pridat_ukol() -> None:
         break
 
 def zobrazit_ukoly() -> None:
-    """Zobrazí všechny uložené úkoly[cite: 21, 22]."""
+    """Zobrazí všechny uložené úkoly."""
     if not ukoly:
         print("\nSeznam úkolů je prázdný.")
         return
@@ -51,7 +51,7 @@ def zobrazit_ukoly() -> None:
         print(f"{index}. {ukol['nazev']} - {ukol['popis']}")
 
 def odstranit_ukol() -> None:
-    """Umožní uživateli odstranit konkrétní úkol podle čísla[cite: 28, 29]."""
+    """Umožní uživateli odstranit konkrétní úkol podle čísla."""
     if not ukoly:
         print("\nNení co odstranit, seznam je prázdný.")
         return
@@ -63,14 +63,14 @@ def odstranit_ukol() -> None:
         
         if 0 <= index < len(ukoly):
             odstraneny = ukoly.pop(index)
-            print(f"Úkol '{odstraneny['nazev']}' byl odstraněn[cite: 33].")
+            print(f"Úkol '{odstraneny['nazev']}' byl odstraněn.")
         else:
             print("Chyba: Úkol s tímto číslem neexistuje.")
     except ValueError:
         print("Chyba: Zadejte prosím platné číslo.")
 
 def spusti_program() -> None:
-    """Hlavní smyčka programu[cite: 37]."""
+    """Hlavní smyčka programu."""
     while True:
         volba = hlavni_menu()
         
