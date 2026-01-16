@@ -1,0 +1,93 @@
+PROJEKT: Task Manager - Dokumentace testovacích případů
+Autor: Květoslav Leidorf
+Soubor: test_cases.txt
+
+---------------------------------------------------------------------------
+TC01: Přidání validního úkolu (Pozitivní test)
+---------------------------------------------------------------------------
+Popis: Ověření, že program správně uloží název a popis úkolu.
+Kroky: 
+1. Zvolit možnost 1 (Přidat nový úkol).
+2. Zadat název: "Nákup".
+3. Zadat popis: "Koupit chleba a mléko".
+Očekávaný výsledek: Program vypíše "Úkol 'Nákup' byl přidán." a vrátí se do menu.
+Skutečný výsledek: Úkol úspěšně uložen, potvrzení zobrazeno.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC02: Zobrazení seznamu úkolů (Pozitivní test)
+---------------------------------------------------------------------------
+Popis: Ověření, že se uložené úkoly správně vypisují v seznamu.
+Vstupní podmínky: V seznamu je alespoň jeden úkol (z TC01).
+Kroky:
+1. Zvolit možnost 2 (Zobrazit všechny úkoly).
+Očekávaný výsledek: Vypíše se: "1. Nákup - Koupit chleba a mléko".
+Skutečný výsledek: Seznam se správně vypsal včetně indexu a popisu.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC03: Úspěšné odstranění úkolu (Pozitivní test)
+---------------------------------------------------------------------------
+Popis: Ověření smazání existujícího úkolu podle jeho čísla.
+Vstupní podmínky: V seznamu je jeden úkol.
+Kroky:
+1. Zvolit možnost 3 (Odstranit úkol).
+2. Na výzvu zadat číslo: "1".
+Očekávaný výsledek: Vypíše se "Úkol 'Nákup' byl odstraněn."
+Skutečný výsledek: Úkol byl ze seznamu smazán, potvrzení zobrazeno.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC04: Přidání úkolu s prázdnými údaji (Negativní test)
+---------------------------------------------------------------------------
+Popis: Ověření, že program nepovolí vytvořit úkol bez názvu nebo popisu.
+Kroky:
+1. Zvolit možnost 1.
+2. Na výzvu k názvu stisknout pouze Enter (ponechat prázdné).
+Očekávaný výsledek: Program vypíše chybu "Název i popis úkolu nesmí být prázdný!" a opakuje výzvu.
+Skutečný výsledek: Program chybu zachytil a nepustil uživatele dál.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC05: Zadání neexistujícího čísla úkolu (Negativní test)
+---------------------------------------------------------------------------
+Popis: Testování reakce na zadání čísla, které není v seznamu.
+Vstupní podmínky: Seznam je prázdný nebo obsahuje méně úkolů než zadané číslo.
+Kroky:
+1. Zvolit možnost 3.
+2. Zadat číslo: "99".
+Očekávaný výsledek: Program vypíše "Chyba: Úkol s tímto číslem neexistuje."
+Skutečný výsledek: Chybová hláška správně zobrazena, program nespadl.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC06: Zadání nečíselného vstupu při mazání (Negativní test)
+---------------------------------------------------------------------------
+Popis: Ověření, že program zvládne zadání textu místo čísla (ValueError).
+Kroky:
+1. Zvolit možnost 3.
+2. Na výzvu k zadání čísla napsat: "abc".
+Očekávaný výsledek: Program vypíše "Chyba: Zadejte prosím platné číslo."
+Skutečný výsledek: Výjimka byla ošetřena pomocí try-except, program pokračuje.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC07: Odstranění z prázdného seznamu (Hraniční případ)
+---------------------------------------------------------------------------
+Popis: Ověření chování funkce pro mazání, pokud neexistují žádné úkoly.
+Vstupní podmínky: Seznam 'ukoly' je prázdný.
+Kroky:
+1. Zvolit možnost 3.
+Očekávaný výsledek: Program vypíše "Není co odstranit, seznam je prázdný."
+Skutečný výsledek: Kontrola prázdného seznamu proběhla správně.
+Stav: PROŠEL (PASS)
+
+---------------------------------------------------------------------------
+TC08: Ukončení programu (Hraniční případ)
+---------------------------------------------------------------------------
+Popis: Ověření, že volba pro konec korektně ukončí aplikaci.
+Kroky:
+1. Zvolit možnost 4 (Konec programu).
+Očekávaný výsledek: Program vypíše "Konec programu." a ukončí se.
+Skutečný výsledek: Program se úspěšně ukončil.
+Stav: PROŠEL (PASS)
